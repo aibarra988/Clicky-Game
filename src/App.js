@@ -1,21 +1,50 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react'
+import NavBar from './components/NavBar'
+import ClickCard from './components/ClickCard'
+import { Container, Col, Row } from 'reactstrap'
+import { ShakeHorizontal } from 'reshake'
+import Characters from './Characters.json'
 
 class App extends Component {
-  render() {
+  
+  state = {
+    characters: Characters,
+    lastSelection: null,
+    score: 0
+  }
+
+  handleClick = (id) => {
+    const score = this.state.lastSelection === id ? 0 : 
+      this.state.score === 0 ? 1 : this.state.score + 1
+    this.setState({
+      lastSelection: id,
+      score: score
+    }, () => console.log("Last id:", this.state.lastSelection, "Score:", this.state.score))
+  }
+
+  render () {
+    const styles = {
+      container: {
+        "marginTop": "2em"
+      }
+    }
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
+      <React.Fragment>
+        <NavBar score={this.state.score}/>
+        <ShakeHorizontal>
+          <Container style={styles.container}>
+            <Row>
+              {
+                this.state.characters.map(c => (
+                  <ClickCard src={c.src} handleClick={() => this.handleClick(c.id)} key={c.id}/>
+                ))
+              }
+            </Row>
+          </Container>
+        </ShakeHorizontal>
+      </React.Fragment>
+    )
   }
 }
 
-export default App;
+export default App
