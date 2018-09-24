@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import NavBar from './components/NavBar'
 import ClickCard from './components/ClickCard'
 import { Container, Col, Row } from 'reactstrap'
-import { ShakeHorizontal } from 'reshake'
 import Characters from './Characters.json'
 
 class App extends Component {
