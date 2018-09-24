@@ -1,7 +1,7 @@
 {
   "name": "clicky-game",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "homepage": "https://aibarra988.github.io/clicky-game/",
   "dependencies": {
     "bootstrap": "^4.1.3",
