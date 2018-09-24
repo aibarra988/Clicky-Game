@@ -3,6 +3,7 @@ import NavBar from './components/NavBar'
 import ClickCard from './components/ClickCard'
 import { Container, Col, Row } from 'reactstrap'
 import Characters from './Characters.json'
+import shuffle from 'shuffle-array'
 
 class App extends Component {
   
@@ -33,9 +34,9 @@ class App extends Component {
         <Container style={styles.container}>
           <Row>
             {
-              this.state.characters.map(c => (
+              shuffle(this.state.characters.map(c => (
                 <ClickCard src={c.src} handleClick={() => this.handleClick(c.id)} key={c.id} />
-              ))
+              )))
             }
           </Row>
         </Container>
