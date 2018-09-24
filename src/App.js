@@ -30,18 +30,16 @@ class App extends Component {
     }
     return (
       <React.Fragment>
-        <NavBar score={this.state.score}/>
-        <ShakeHorizontal>
-          <Container style={styles.container}>
-            <Row>
-              {
-                this.state.characters.map(c => (
-                  <ClickCard src={c.src} handleClick={() => this.handleClick(c.id)} key={c.id}/>
-                ))
-              }
-            </Row>
-          </Container>
-        </ShakeHorizontal>
+        <NavBar score={this.state.score} />
+        <Container style={styles.container}>
+          <Row>
+            {
+              this.state.characters.map(c => (
+                <ClickCard src={c.src} handleClick={() => this.handleClick(c.id)} key={c.id} />
+              ))
+            }
+          </Row>
+        </Container>
       </React.Fragment>
     )
   }
